@@ -51,7 +51,7 @@ export default function Dashboard({ jobs }) {
             src={heroImg} 
             alt="TrackHire Job Application Tracking" 
             
-            className="w-full h-auto max-w-[350px] md:max-w-none md:max-h-[260px] lg:max-h-[310px] object-contain drop-shadow-xl hover:scale-105 transition-transform duration-500"          />
+            className="w-full h-auto max-w-87.5 md:max-w-none md:max-h-65 lg:max-h-77.5 object-contain drop-shadow-xl hover:scale-105 transition-transform duration-500"          />
         </div>
         
       </div>

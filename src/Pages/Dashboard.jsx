@@ -19,7 +19,7 @@ export default function Dashboard({ jobs }) {
     <div className="space-y-6 animate-in slide-in-from-top-4 duration-500">
       
       {/* --- COMPACT SEAMLESS GRADIENT HERO BANNER --- */}
-      <div className="relative w-full rounded-2xl overflow-hidden shadow-lg flex flex-col md:flex-row bg-gradient-to-b md:bg-gradient-to-r from-indigo-900 via-indigo-800 to-white">
+      <div className="relative w-full rounded-2xl overflow-hidden shadow-lg flex flex-col md:flex-row bg-gradient-to-b md:bg-gradient-to-r from-indigo-900  to-white">
         
         {/* Adjusted subtle glowing orb */}
         <div className="absolute top-0 left-0 -mt-10 -ml-10 h-48 w-48 rounded-full bg-indigo-500/20 blur-3xl z-0 pointer-events-none"></div>

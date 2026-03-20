@@ -1,8 +1,8 @@
 // src/Pages/Profile.jsx
 import React, { useState } from 'react';
-import { User, Briefcase, Mail, MapPin, Save } from 'lucide-react';
+import { User, Briefcase, Mail, MapPin, Save, LogOut } from 'lucide-react'; // Added LogOut icon
 import profileIcon from '../assets/profile_icon.png';
-import Loader from '../Components/Loader'; // IMPORT LOADER
+import Loader from '../Components/Loader';
 
 export default function Profile({ userProfile, setUserProfile }) {
   const [formData, setFormData] = useState({
@@ -13,7 +13,10 @@ export default function Profile({ userProfile, setUserProfile }) {
   });
 
   const [saved, setSaved] = useState(false);
-  const [isSaving, setIsSaving] = useState(false); // NEW STATE
+  const [isSaving, setIsSaving] = useState(false);
+  
+  // NEW: State to track logout loading
+  const [isLoggingOut, setIsLoggingOut] = useState(false);
 
   const handleSubmit = async (e) => {
     e.preventDefault();
@@ -34,6 +37,23 @@ export default function Profile({ userProfile, setUserProfile }) {
     setTimeout(() => setSaved(false), 3000); 
   };
 
+  // NEW: Async function to handle logging out
+  const handleLogout = async () => {
+    setIsLoggingOut(true);
+    
+    // Simulate server delay for logging out
+    await new Promise(resolve => setTimeout(resolve, 800));
+    
+    // Reset the global profile to default
+    const emptyProfile = { name: 'Unknown', title: 'Unknown', email: '', location: '' };
+    setUserProfile(emptyProfile);
+    
+    // Reset the local form fields so they instantly clear out
+    setFormData({ name: '', title: '', email: '', location: '' });
+    
+    setIsLoggingOut(false);
+  };
+
   return (
     <div className="max-w-3xl mx-auto space-y-6 animate-in fade-in duration-300">
       <div className="bg-white rounded-2xl shadow-sm border border-gray-100 p-8 flex items-center gap-6">
@@ -51,7 +71,7 @@ export default function Profile({ userProfile, setUserProfile }) {
         </div>
 
         <form onSubmit={handleSubmit} className="p-8 space-y-6">
-          <fieldset disabled={isSaving} className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <fieldset disabled={isSaving || isLoggingOut} className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="space-y-2">
               <label className="text-sm font-semibold text-gray-700">Full Name</label>
               <div className="relative">
@@ -82,17 +102,33 @@ export default function Profile({ userProfile, setUserProfile }) {
             </div>
           </fieldset>
 
-          <div className="pt-4 flex items-center justify-between border-t border-gray-100 mt-6">
-            <span className="text-sm font-medium text-green-600 transition-opacity duration-300" style={{ opacity: saved ? 1 : 0 }}>
-              Profile updated successfully!
-            </span>
+          {/* Action Buttons Container */}
+          <div className="pt-4 flex flex-col-reverse md:flex-row items-center justify-between border-t border-gray-100 mt-6 gap-4">
+            
+            {/* Log Out Button */}
             <button 
-              type="submit" 
-              disabled={isSaving}
-              className="bg-indigo-600 hover:bg-indigo-700 text-white px-8 h-12 rounded-xl font-bold shadow-md hover:shadow-lg transition-all active:scale-95 flex items-center justify-center gap-2 min-w-[160px] disabled:bg-indigo-400 disabled:cursor-wait"
+              type="button" 
+              onClick={handleLogout}
+              disabled={isLoggingOut || isSaving}
+              className="text-red-600 hover:bg-red-50 hover:shadow-sm px-6 h-12 rounded-xl font-bold transition-all flex items-center justify-center gap-2 disabled:opacity-50 disabled:cursor-wait w-full md:w-auto"
             >
-              {isSaving ? <Loader color="bg-white" /> : <><Save size={18} /> Save Profile</>}
+              {isLoggingOut ? <Loader color="bg-red-600" /> : <><LogOut size={18} /> Log Out</>}
             </button>
+
+            {/* Save Section */}
+            <div className="flex items-center gap-4 w-full md:w-auto justify-end">
+              <span className="text-sm font-medium text-green-600 transition-opacity duration-300" style={{ opacity: saved ? 1 : 0 }}>
+                Profile updated successfully!
+              </span>
+              <button 
+                type="submit" 
+                disabled={isSaving || isLoggingOut}
+                className="bg-indigo-600 hover:bg-indigo-700 text-white px-8 h-12 rounded-xl font-bold shadow-md hover:shadow-lg transition-all active:scale-95 flex items-center justify-center gap-2 min-w-[160px] disabled:bg-indigo-400 disabled:cursor-wait w-full md:w-auto"
+              >
+                {isSaving ? <Loader color="bg-white" /> : <><Save size={18} /> Save Profile</>}
+              </button>
+            </div>
+            
           </div>
         </form>
       </div>

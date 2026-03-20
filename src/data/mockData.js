@@ -1,7 +1,5 @@
 // src/data/mockData.js
 
-// This is temporary mock data so your UI isn't empty. 
-// When you add a database later, you will delete this file and fetch from your API.
 export const initialJobs = [
   {
     id: '1',
@@ -17,7 +15,8 @@ export const initialJobs = [
     jobType: 'Internship',
     referralUsed: true,
     referrerName: 'John Doe',
-    referrerRole: 'Senior Eng'
+    referrerRole: 'Senior Eng',
+    isPinned: true // <-- NEW
   },
   {
     id: '2',
@@ -33,7 +32,8 @@ export const initialJobs = [
     jobType: 'Full-time',
     referralUsed: false,
     referrerName: '',
-    referrerRole: ''
+    referrerRole: '',
+    isPinned: false // <-- NEW
   },
   {
     id: '3',
@@ -49,7 +49,8 @@ export const initialJobs = [
     jobType: 'Full-time',
     referralUsed: true,
     referrerName: 'Kevin Lee',
-    referrerRole: 'L5 Software Engineer'
+    referrerRole: 'L5 Software Engineer',
+    isPinned: false // <-- NEW
   },
   {
     id: '4',
@@ -65,7 +66,8 @@ export const initialJobs = [
     jobType: 'Full-time',
     referralUsed: false,
     referrerName: '',
-    referrerRole: ''
+    referrerRole: '',
+    isPinned: false // <-- NEW
   },
   {
     id: '5',
@@ -81,7 +83,8 @@ export const initialJobs = [
     jobType: 'Internship',
     referralUsed: true,
     referrerName: 'Sarah Chen',
-    referrerRole: 'Staff Engineer'
+    referrerRole: 'Staff Engineer',
+    isPinned: true // <-- NEW
   },
   {
     id: '6',
@@ -97,7 +100,8 @@ export const initialJobs = [
     jobType: 'Full-time',
     referralUsed: false,
     referrerName: '',
-    referrerRole: ''
+    referrerRole: '',
+    isPinned: false // <-- NEW
   },
   {
     id: '7',
@@ -113,7 +117,8 @@ export const initialJobs = [
     jobType: 'Full-time',
     referralUsed: false,
     referrerName: '',
-    referrerRole: ''
+    referrerRole: '',
+    isPinned: false // <-- NEW
   },
   {
     id: '8',
@@ -129,7 +134,8 @@ export const initialJobs = [
     jobType: 'Internship',
     referralUsed: true,
     referrerName: 'Amit Singh',
-    referrerRole: 'Engineering Manager'
+    referrerRole: 'Engineering Manager',
+    isPinned: false // <-- NEW
   },
   {
     id: '9',
@@ -145,7 +151,8 @@ export const initialJobs = [
     jobType: 'Full-time',
     referralUsed: false,
     referrerName: '',
-    referrerRole: ''
+    referrerRole: '',
+    isPinned: false // <-- NEW
   },
   {
     id: '10',
@@ -161,7 +168,8 @@ export const initialJobs = [
     jobType: 'Internship',
     referralUsed: true,
     referrerName: 'Leo Messi',
-    referrerRole: 'Senior Frontend Lead'
+    referrerRole: 'Senior Frontend Lead',
+    isPinned: false // <-- NEW
   },
   {
     id: '11',
@@ -177,7 +185,8 @@ export const initialJobs = [
     jobType: 'Internship',
     referralUsed: false,
     referrerName: '',
-    referrerRole: ''
+    referrerRole: '',
+    isPinned: false // <-- NEW
   },
   {
     id: '12',
@@ -193,6 +202,7 @@ export const initialJobs = [
     jobType: 'Internship',
     referralUsed: false,
     referrerName: '',
-    referrerRole: ''
+    referrerRole: '',
+    isPinned: false // <-- NEW
   }
 ];

@@ -50,10 +50,10 @@ export default function Sidebar({ userProfile }) {
              className="h-10 w-10 rounded-full bg-gray-100 object-cover p-1 group-hover:ring-2 ring-indigo-200 transition-all" 
            />
            <div className="hidden md:block overflow-hidden">
-             <p className="text-sm font-bold text-gray-900 truncate">
+             <p className="text-md font-bold text-gray-900 truncate">
                {userProfile.name !== 'Unknown' ? userProfile.name : 'Unknown User'}
              </p>
-             <p className="text-xs text-gray-500 truncate mt-0.5">
+             <p className="text-md text-gray-500 truncate mt-0.3">
                {userProfile.title !== 'Unknown' ? userProfile.title : 'Update Profile'}
              </p>
            </div>

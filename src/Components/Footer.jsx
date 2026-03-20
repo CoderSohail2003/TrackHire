@@ -30,7 +30,7 @@ export default function Footer() {
               TrackHire<sup className="text-[10px] ml-0.5 text-gray-500 font-bold">TM</sup>
             </span>
           </div>
-          <p className="text-[11px] text-gray-500 mt-0.5 font-medium tracking-wide">
+          <p className="text-[11px] text-slate-900 mt-0.5 font-medium tracking-wide">
             Organizing your career journey. &copy; {currentYear}
           </p>
         </div>

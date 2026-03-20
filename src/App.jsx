@@ -1,84 +1,94 @@
 // src/App.jsx
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import Sidebar from './Components/Sidebar';
 import Header from './Components/Header';
 import JobModal from './Components/JobModal';
 import Dashboard from './Pages/Dashboard';
 import Applications from './Pages/Application';
+import Profile from './Pages/Profile';
 import { initialJobs } from './data/mockData';
+import Footer from './Components/Footer';
 
 export default function App() {
-  // --- GLOBAL STATE ---
-  // 1. Manage our list of jobs (Replacing the Database for now)
-  const [jobs, setJobs] = useState(initialJobs);
-  
-  // 2. Navigation State ('dashboard' or 'applications')
-  const [activeView, setActiveView] = useState('dashboard');
-  
-  // 3. Modal State (For adding/editing jobs)
+  // 1. LAZY INITIALIZE STATE FROM LOCAL STORAGE
+  const [jobs, setJobs] = useState(() => {
+    const savedJobs = localStorage.getItem('trackhire_jobs');
+    return savedJobs ? JSON.parse(savedJobs) : initialJobs;
+  });
+
+  const [userProfile, setUserProfile] = useState(() => {
+    const savedProfile = localStorage.getItem('trackhire_profile');
+    return savedProfile ? JSON.parse(savedProfile) : {
+      name: 'Unknown',
+      title: 'Unknown',
+      email: '',
+      location: ''
+    };
+  });
+
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [editingJob, setEditingJob] = useState(null);
 
-  // --- CRUD OPERATIONS (Local State only) ---
-  
-  // ADD: Creates a new job with a random ID
+  // 2. SAVE TO LOCAL STORAGE WHENEVER STATE CHANGES
+  useEffect(() => {
+    localStorage.setItem('trackhire_jobs', JSON.stringify(jobs));
+  }, [jobs]);
+
+  useEffect(() => {
+    localStorage.setItem('trackhire_profile', JSON.stringify(userProfile));
+  }, [userProfile]);
+
+  // --- CRUD OPERATIONS ---
   const handleAddJob = (jobData) => {
     const newJob = { ...jobData, id: Date.now().toString() };
     setJobs([newJob, ...jobs]);
   };
 
-  // UPDATE: Finds the job by ID and replaces its data
   const handleUpdateJob = (updatedData) => {
     setJobs(jobs.map(job => (job.id === editingJob.id ? { ...updatedData, id: editingJob.id } : job)));
     setEditingJob(null);
   };
 
-  // DELETE: Removes a job from the array
   const handleDeleteJob = (id) => {
     if (window.confirm("Delete this log?")) {
       setJobs(jobs.filter(job => job.id !== id));
     }
   };
 
-  // --- RENDER ---
   return (
-    <div className="min-h-screen bg-gray-50 font-sans text-gray-900">
-      
-      {/* 1. Left Sidebar Navigation */}
-      <Sidebar activeView={activeView} setActiveView={setActiveView} />
-
-      {/* Main Right-Side Content Area */}
-      <main className="md:ml-64 min-h-screen flex flex-col">
+    <BrowserRouter>
+      <div className="min-h-screen bg-gray-50 font-sans text-gray-900">
         
-        {/* 2. Top Header */}
-        <Header 
-          activeView={activeView} 
-          totalJobs={jobs.length} 
-          onOpenModal={() => setIsModalOpen(true)} 
+        <Sidebar userProfile={userProfile} />
+
+        <main className="md:ml-64 min-h-screen flex flex-col">
+          <Header totalJobs={jobs.length} onOpenModal={() => setIsModalOpen(true)} />
+
+          <div className="p-4 md:p-8 max-w-6xl mx-auto w-full flex-1">
+            <Routes>
+              <Route path="/" element={<Dashboard jobs={jobs} />} />
+              
+              <Route path="/applications" element={
+                <Applications jobs={jobs} onEdit={(job) => { setEditingJob(job); setIsModalOpen(true); }} onDelete={handleDeleteJob} />
+              } />
+              
+              <Route path="/profile" element={
+                <Profile userProfile={userProfile} setUserProfile={setUserProfile} />
+              } />
+            </Routes>
+          </div>
+          <Footer/>
+        </main>
+
+        <JobModal 
+          isOpen={isModalOpen} 
+          onClose={() => { setIsModalOpen(false); setEditingJob(null); }}
+          onSubmit={editingJob ? handleUpdateJob : handleAddJob}
+          initialData={editingJob}
         />
 
-        {/* 3. Dynamic Page Content based on 'activeView' */}
-        <div className="p-4 md:p-8 max-w-6xl mx-auto w-full flex-1">
-          {activeView === 'dashboard' ? (
-            <Dashboard jobs={jobs} />
-          ) : (
-            <Applications 
-              jobs={jobs} 
-              onEdit={(job) => { setEditingJob(job); setIsModalOpen(true); }}
-              onDelete={handleDeleteJob}
-            />
-          )}
-        </div>
-      </main>
-
-      {/* 4. Hidden Modal - only shows when isModalOpen is true */}
-      <JobModal 
-        isOpen={isModalOpen} 
-        onClose={() => { setIsModalOpen(false); setEditingJob(null); }}
-        onSubmit={editingJob ? handleUpdateJob : handleAddJob}
-        initialData={editingJob}
-      />
-
-    </div>
+      </div>
+    </BrowserRouter>
   );
 }

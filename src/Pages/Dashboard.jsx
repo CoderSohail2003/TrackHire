@@ -2,7 +2,7 @@
 import React, { useMemo } from 'react';
 import { 
   Briefcase, User, CheckCircle2, Clock, Sparkles, Search, Pin, 
-  CalendarDays, AlertCircle, ArrowUpRight, Timer, Info 
+  CalendarDays, AlertCircle, ArrowUpRight, Timer, Info, ScanSearch 
 } from 'lucide-react';
 
 import heroImg from '../assets/hero_img.png'; 
@@ -55,9 +55,9 @@ export default function Dashboard({ jobs }) {
             <h1 className="text-3xl md:text-4xl lg:text-5xl font-black leading-tight tracking-tight drop-shadow-md">
               <span className="inline-flex items-center gap-3">
                 YOUR JOB HUNT 
-                <Search className="h-[0.9em] w-[0.9em] text-slate-900" strokeWidth={3} />
+                <ScanSearch className="h-[1em] w-[1em] text-white" strokeWidth={3} />
               </span>
-              <br />
+              <br/>
               ORGANIZED <br />
               SIMPLIFIED
             </h1>

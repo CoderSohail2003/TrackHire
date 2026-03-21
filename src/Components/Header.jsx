@@ -2,6 +2,8 @@
 import React from 'react';
 import { useLocation } from 'react-router-dom';
 import { Plus } from 'lucide-react';
+import logoVideo from '../assets/TrackHire_Logo.mp4'; // <-- Add this import!
+
 
 export default function Header({ totalJobs, onOpenModal }) {
   const location = useLocation();
@@ -18,9 +20,19 @@ export default function Header({ totalJobs, onOpenModal }) {
 
   return (
     <header className="h-16 bg-white border-b border-gray-200 px-4 md:px-8 flex items-center justify-between sticky top-0 z-20">
-      <div className="md:hidden flex items-center gap-2">
-         <div className="h-8 w-8 bg-indigo-600 rounded-lg flex items-center justify-center text-white font-bold text-lg">T</div>
-         <span className="font-bold text-lg">TrackHire</span>
+      
+      {/* Updated Dynamic Video Logo */}
+      <div className="md:hidden flex items-center">
+        <video 
+          autoPlay 
+          loop 
+          muted 
+          playsInline 
+          className="h-10 w-auto rounded-md object-cover"
+        >
+          <source src={logoVideo} type="video/mp4" />
+          Your browser does not support the video tag.
+        </video>
       </div>
 
       <div className="hidden md:block text-sm text-gray-500">

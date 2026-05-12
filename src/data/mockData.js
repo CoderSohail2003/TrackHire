@@ -16,7 +16,10 @@ export const initialJobs = [
     referralUsed: true,
     referrerName: 'John Doe',
     referrerRole: 'Senior Eng',
-    isPinned: true // <-- NEW
+    isPinned: true,
+    // NEW PLATFORM FIELDS
+    platformType: 'Website',
+    platformName: 'LinkedIn'
   },
   {
     id: '2',
@@ -33,7 +36,9 @@ export const initialJobs = [
     referralUsed: false,
     referrerName: '',
     referrerRole: '',
-    isPinned: false // <-- NEW
+    isPinned: false,
+    platformType: 'Website',
+    platformName: 'Naukri'
   },
   {
     id: '3',
@@ -50,7 +55,9 @@ export const initialJobs = [
     referralUsed: true,
     referrerName: 'Kevin Lee',
     referrerRole: 'L5 Software Engineer',
-    isPinned: false // <-- NEW
+    isPinned: false,
+    platformType: 'Website',
+    platformName: 'Glassdoor'
   },
   {
     id: '4',
@@ -67,7 +74,9 @@ export const initialJobs = [
     referralUsed: false,
     referrerName: '',
     referrerRole: '',
-    isPinned: false // <-- NEW
+    isPinned: false,
+    platformType: 'App',
+    platformName: 'Indeed'
   },
   {
     id: '5',
@@ -84,7 +93,9 @@ export const initialJobs = [
     referralUsed: true,
     referrerName: 'Sarah Chen',
     referrerRole: 'Staff Engineer',
-    isPinned: true // <-- NEW
+    isPinned: true,
+    platformType: 'Website',
+    platformName: 'Internshala'
   },
   {
     id: '6',
@@ -101,7 +112,9 @@ export const initialJobs = [
     referralUsed: false,
     referrerName: '',
     referrerRole: '',
-    isPinned: false // <-- NEW
+    isPinned: false,
+    platformType: '',
+    platformName: ''
   },
   {
     id: '7',
@@ -118,7 +131,9 @@ export const initialJobs = [
     referralUsed: false,
     referrerName: '',
     referrerRole: '',
-    isPinned: false // <-- NEW
+    isPinned: false,
+    platformType: 'Website',
+    platformName: 'Dice.com'
   },
   {
     id: '8',
@@ -135,7 +150,9 @@ export const initialJobs = [
     referralUsed: true,
     referrerName: 'Amit Singh',
     referrerRole: 'Engineering Manager',
-    isPinned: false // <-- NEW
+    isPinned: false,
+    platformType: 'App',
+    platformName: 'Apna'
   },
   {
     id: '9',
@@ -152,7 +169,9 @@ export const initialJobs = [
     referralUsed: false,
     referrerName: '',
     referrerRole: '',
-    isPinned: false // <-- NEW
+    isPinned: false,
+    platformType: '',
+    platformName: ''
   },
   {
     id: '10',
@@ -169,7 +188,9 @@ export const initialJobs = [
     referralUsed: true,
     referrerName: 'Leo Messi',
     referrerRole: 'Senior Frontend Lead',
-    isPinned: false // <-- NEW
+    isPinned: false,
+    platformType: 'Website',
+    platformName: 'FlexJobs'
   },
   {
     id: '11',
@@ -186,7 +207,9 @@ export const initialJobs = [
     referralUsed: false,
     referrerName: '',
     referrerRole: '',
-    isPinned: false // <-- NEW
+    isPinned: false,
+    platformType: '',
+    platformName: ''
   },
   {
     id: '12',
@@ -203,6 +226,8 @@ export const initialJobs = [
     referralUsed: false,
     referrerName: '',
     referrerRole: '',
-    isPinned: false // <-- NEW
+    isPinned: false,
+    platformType: 'Website',
+    platformName: 'Monster / foundit'
   }
 ];

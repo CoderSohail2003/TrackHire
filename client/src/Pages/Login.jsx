@@ -33,9 +33,9 @@ export default function Login() {
       <div className="bg-white max-w-5xl w-full rounded-3xl shadow-2xl overflow-hidden flex flex-col md:flex-row">
         
         {/* Left Panel - Branding (same as Register) */}
-        <div className="md:w-5/12 bg-indigo-600 p-8 lg:p-12 text-white flex flex-col justify-between relative overflow-hidden">
-          <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 rounded-full bg-indigo-500 opacity-50 blur-3xl"></div>
-          <div className="absolute bottom-0 left-0 -ml-16 -mb-16 w-64 h-64 rounded-full bg-indigo-700 opacity-50 blur-3xl"></div>
+        <div className="md:w-5/12 bg-[#211f2f] p-8 lg:p-12 text-white flex flex-col justify-between relative overflow-hidden">
+          <div className="absolute top-0 right-0 -mr-16 -mt-16 w-64 h-64 rounded-full bg-[#918ca9] opacity-50 blur-3xl"></div>
+          <div className="absolute bottom-0 left-0 -ml-16 -mb-16 w-64 h-64 rounded-full bg-[#918ca9] opacity-50 blur-3xl"></div>
 
           <div className="relative z-10">
             <div className="flex items-center gap-2 mb-12">
@@ -132,7 +132,7 @@ export default function Login() {
                 type="submit"
                 disabled={isLoading}
                 className={`w-full mt-4 flex items-center justify-center gap-2 py-3 px-4 rounded-xl text-white font-semibold ${
-                  isLoading ? 'bg-indigo-400 cursor-not-allowed' : 'bg-indigo-600 hover:bg-indigo-700 shadow-md hover:shadow-lg'
+                  isLoading ? 'bg-indigo-400 cursor-not-allowed' : 'bg-[#211f2f] hover:bg-[#918ff2] shadow-md hover:shadow-lg'
                 } transition-all duration-200`}
               >
                 {isLoading ? (

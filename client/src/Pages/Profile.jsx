@@ -36,7 +36,7 @@ export default function Profile() {
       {/* Main Profile Card */}
       <div className="bg-white rounded-2xl shadow-xl overflow-hidden border border-gray-100">
         {/* Cover / Gradient Bar */}
-        <div className="h-32 bg-gradient-to-r from-indigo-500 to-purple-600 relative">
+        <div className="h-32 bg-gradient-to-r from-[#211f2f] to-[#918ca9] relative">
           <div className="absolute -bottom-12 left-8">
             <div className="h-24 w-24 rounded-full bg-white p-1 shadow-xl">
               <div className="h-full w-full rounded-full bg-indigo-100 flex items-center justify-center text-indigo-600">
